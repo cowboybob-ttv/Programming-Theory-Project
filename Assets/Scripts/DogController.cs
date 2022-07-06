@@ -13,13 +13,14 @@ public class DogController : Animal
         dogAnim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    //Polymorphism
     public override void Update()
     {
         DogMovement();
         DestroyOutOfBounds(gameObject);
     }
 
+    //Inheritance
     public void DogMovement()
     {
         if (buttonRun && buttonValue >= 2)

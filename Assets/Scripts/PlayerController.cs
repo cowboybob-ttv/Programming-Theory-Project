@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     private Animator playerAnim;
     private SpriteRenderer playerSprite;
+    private float xBound = -13f;
 
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {        
         PlayerMovement();
+        ConstrainPlayer();
     }
 
     public void PlayerMovement()
@@ -38,6 +40,14 @@ public class PlayerController : MonoBehaviour
         {
             playerSprite.flipX = true;
         }
+    }
+
+    public void ConstrainPlayer()
+    {
+        if (transform.position.x < xBound)
+        {
+            transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
+        } 
     }
 
     

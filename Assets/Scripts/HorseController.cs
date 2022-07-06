@@ -13,13 +13,14 @@ public class HorseController : Animal
         horseAnim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    //Polymorphism
     public override void Update()
     {
         HorseMovement();
         DestroyOutOfBounds(gameObject);
     }
 
+    //Inheritance
     public void HorseMovement()
     {
         if (buttonRun && buttonValue >= 1)
@@ -27,7 +28,7 @@ public class HorseController : Animal
         //speed = 6;
         horseAnim.SetBool("Interaction", true);
         horseSprite.flipX = false;
-        AnimalMovement(6);
+        AnimalMovement(5);
         }
     }
 }

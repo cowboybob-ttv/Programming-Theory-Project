@@ -5,7 +5,9 @@ using UnityEngine;
 public class Animal : MonoBehaviour
 {
     public GameObject runButton;
+    //Encapsulation
     public float speed { set; get; }
+    //Encapsulation
     public int buttonValue {get; set;}
     protected bool buttonRun = false;
     public static float xDestroy = 20f;
@@ -15,6 +17,7 @@ public class Animal : MonoBehaviour
         DestroyOutOfBounds(gameObject);
     }
 
+    //Abstraction
     public void AnimalMovement(float speed)
     {
         transform.Translate(Vector2.left * Time.deltaTime * speed * -1);
@@ -29,6 +32,7 @@ public class Animal : MonoBehaviour
         Debug.Log("Touched Animal");
     }
 
+    //Abstraction
     public void Button1Bool()
     {
         buttonRun = true;
@@ -36,6 +40,7 @@ public class Animal : MonoBehaviour
         runButton.SetActive(false);
     }
 
+    //Abstraction    
     public void DestroyOutOfBounds(GameObject gameObject)
     {
         if (transform.position.x > xDestroy)

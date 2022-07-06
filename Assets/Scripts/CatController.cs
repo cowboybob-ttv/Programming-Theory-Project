@@ -13,13 +13,14 @@ public class CatController : Animal
         catAnim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    //Polymorphism
     public override void Update()
     {
         CatMovement();
         DestroyOutOfBounds(gameObject);
     }
 
+    //Inheritance
     public void CatMovement()
     {
         if (buttonRun && buttonValue >= 3)
