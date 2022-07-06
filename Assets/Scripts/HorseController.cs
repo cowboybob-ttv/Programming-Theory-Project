@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HorseController : Animal
-{
-    public static bool horseRun = false;
+{    
     private SpriteRenderer horseSprite;
     private Animator horseAnim;
     
@@ -15,28 +14,20 @@ public class HorseController : Animal
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         HorseMovement();
+        DestroyOutOfBounds(gameObject);
     }
 
     public void HorseMovement()
     {
-        if (horseRun)
+        if (buttonRun && buttonValue >= 1)
         {
-        speed = 6;
+        //speed = 6;
         horseAnim.SetBool("Interaction", true);
         horseSprite.flipX = false;
-        AnimalMovement();
+        AnimalMovement(6);
         }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            horseRun = true;
-        }
-        Debug.Log("Touched Horse");
     }
 }

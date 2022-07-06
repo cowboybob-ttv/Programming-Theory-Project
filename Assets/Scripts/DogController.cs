@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DogController : Animal
 {
-    public static bool dogRun = false;
     private SpriteRenderer dogSprite;
     private Animator dogAnim;
     
@@ -15,28 +14,20 @@ public class DogController : Animal
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         DogMovement();
+        DestroyOutOfBounds(gameObject);
     }
 
     public void DogMovement()
     {
-        if (dogRun)
+        if (buttonRun && buttonValue >= 2)
         {
-        speed = 4;
+        //speed = 4;
         dogAnim.SetBool("Interaction", true);
         dogSprite.flipX = false;
-        AnimalMovement();
+        AnimalMovement(4);
         }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            dogRun = true;
-        }
-        Debug.Log("Touched Dog");
     }
 }

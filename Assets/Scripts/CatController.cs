@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CatController : Animal
 {
-    public static bool catRun = false;
     private SpriteRenderer catSprite;
     private Animator catAnim;
     
@@ -15,28 +14,20 @@ public class CatController : Animal
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         CatMovement();
+        DestroyOutOfBounds(gameObject);
     }
 
     public void CatMovement()
     {
-        if (catRun)
+        if (buttonRun && buttonValue >= 3)
         {
-        speed = 2;
+        //speed = 3;
         catAnim.SetBool("Interaction", true);
         catSprite.flipX = false;
-        AnimalMovement();
+        AnimalMovement(3);
         }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            catRun = true;
-        }
-        Debug.Log("Touched Cat");
     }
 }
